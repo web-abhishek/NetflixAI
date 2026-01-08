@@ -1,7 +1,10 @@
 import React from 'react'
 import { IMG_URL } from '../Utilities/Constants'
 
-const MovieCard = ({posterPath}) => {
+const MovieCard = ({ posterPath }) => {
+  
+  if (!posterPath) return null;
+
   return (
     <div className="w-[200px] h-[300px] shrink-0">
       <img
