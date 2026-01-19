@@ -10,7 +10,7 @@ export const UseNowPlayingMovies = () => {
         const data = await fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', API_OPTION)
         const json = await data.json();
 
-        // console.log(json.results); //20lists
+        // console.log(json); //20lists
 
         dispatch(addNowPlayingMovies(json.results));
     }

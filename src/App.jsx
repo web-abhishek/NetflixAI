@@ -1,14 +1,18 @@
+  import './App.css'
+  import { useSelector } from "react-redux"
+  import Body from './Components/Body';
+  import PageLoader from './Components/PageLoader';
 
-import './App.css'
-import { Provider } from "react-redux"
-import Body from './Components/Body';
-import Header from './Components/Header';
-import appStore from './Utilities/appStore';
+  function App() {
 
-function App() {
-  return (
-    <Provider store={appStore}> <Body /> </Provider>
-  )
-}
+    const isLoading = useSelector((store) => store.loader.isLoading);
 
-export default App;
+    return (
+      <>
+        {isLoading && <PageLoader />}
+        <Body />
+      </>
+    )
+  }
+
+  export default App;
