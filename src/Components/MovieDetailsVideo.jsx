@@ -11,8 +11,8 @@ const MovieDetailsVideo = ({ trailer }) => {
   if (!bestTrailer) return null;
 
   return (
-    <div className='w-5xl mx-auto rounded-4xl overflow-hidden'>
-      <iframe className='relative w-full aspect-video'
+    <div className='w-7xl mx-auto overflow-hidden'>
+      <iframe className='relative w-full aspect-video mt-10 rounded-4xl font-manrope'
         src={"https://www.youtube.com/embed/" + bestTrailer?.key + "?autoplay=1&mute=1&controls=0&showinfo=0&modestbranding=1&rel=0&playsinline=1&disablekb=1&fs=0&loop=1&playlist=" + bestTrailer?.key}
         title="YouTube video player"
         frameBorder="0"

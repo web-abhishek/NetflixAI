@@ -1,4 +1,4 @@
-export const USER_AVATAR = "https://img.freepik.com/free-photo/tropical-macaw-perched-vibrant-feathers-focus-generated-by-ai_188544-9720.jpg?t=st=1765290456~exp=1765294056~hmac=3dd1dad2a5a8520623da507da2cd7dc5a734e43eb2a11a35cd93832a121f5325&w=1480";
+export const USER_AVATAR = "https://www.svgrepo.com/show/382106/male-avatar-boy-face-man-user-9.svg";
 
 export const API_OPTION = {
   method: 'GET',

@@ -8,10 +8,10 @@
     const isLoading = useSelector((store) => store.loader.isLoading);
 
     return (
-      <>
+      <div className='bg-d'>
         {isLoading && <PageLoader />}
         <Body />
-      </>
+      </div>
     )
   }
 

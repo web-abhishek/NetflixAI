@@ -9,6 +9,7 @@ import { addUser, removeUser } from '../Utilities/userSlice';
 import { toggleGptSearchView } from '../Utilities/GptSearchSlice';
 import { SUPPORTED_LANGUAGES } from '../Utilities/Constants';
 import { changeLanguage } from '../Utilities/configSlice';
+import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
 
@@ -17,23 +18,23 @@ const Header = () => {
   const dispatch = useDispatch();
   const showGptSearch = useSelector(store => store.gpt.showGptSearch)
 
-   useEffect(() => {
+  useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-  if (user) {
-    // When User is signed in
-    const {uid, email, displayName, photoURL} = user;
-    dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL:photoURL }));
-    navigate("/browse")
-  } else {
-    // When User is signed out
-    dispatch(removeUser());
-    navigate("/")
-  }
+      if (user) {
+        // When User is signed in
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
+        navigate("/browse")
+      } else {
+        // When User is signed out
+        dispatch(removeUser());
+        navigate("/")
+      }
     });
-     return () => unsubscribe();
-     
-   }, [])
-  
+    return () => unsubscribe();
+
+  }, [])
+
   const handleSignOut = () => {
     signOut(auth).then(() => {
       // Sign-out successful.
@@ -61,16 +62,21 @@ const Header = () => {
           {showGptSearch && <select className='bg-purple-600 text-white py-2 px-4 rounded' onChange={handleLangChange}>
             {
               SUPPORTED_LANGUAGES.map((lan) => (
-                <option key={lan.identifier} value={lan.identifier}>{ lan.name }</option>
+                <option key={lan.identifier} value={lan.identifier}>{lan.name}</option>
               ))
             }
           </select>}
-          <button className='rounded px-4 py-2 font-medium text-lg cursor-pointer text-white bg-red-700'
-            onClick={handleGptSearch}>{ showGptSearch ? "All Movies":"GPT Search" }</button>
-          <img className='rounded w-12 h-12' src={user.photoURL} />
-          <button className='rounded font-medium text-lg cursor-pointer text-white'
+          <button className='font-manrope border border-red-950 rounded b-li px-4 py-2 font-bold text-base cursor-pointer text-gray-200 bg-linear-60 from-red-800 to-black'
+            onClick={handleGptSearch}>{showGptSearch ? "All Movies" : (
+              <div className='flex gap-2 items-center'
+              >
+      GPT Search <FaSearch />
+    </div>
+  )}</button>
+          <img className='rounded-full w-8 h-8' src={user.photoURL} />
+          <button className='font-manrope font-bold text-base cursor-pointer text-gray-200'
             onClick={handleSignOut}>Sign Out</button>
-      </div>
+        </div>
       )}
     </div>
 

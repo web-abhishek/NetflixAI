@@ -6,6 +6,7 @@ import { clearMovieDetails } from '../Utilities/movieDetailsSlice';
 import { useParams } from 'react-router-dom';
 import UseMovieDetails from '../hooks/UseMovieDetails';
 import SimilarMovies from './SimilarMovies';
+import Header from './Header';
 
 const MovieDetails = () => {
     const { movieId } = useParams();
@@ -13,6 +14,7 @@ const MovieDetails = () => {
     UseMovieDetails(movieId);
 
     const movieAllDetails = useSelector((store) => store.movieDetails);
+    console.log(movieAllDetails.details);
     // console.log(movieAllDetails.similarMovies.results);
     // console.log(movieAllDetails.trailer.results);
     
@@ -24,7 +26,7 @@ const MovieDetails = () => {
     }, [])
 
     return (
-        <div>
+        <div className='min-h-screen'>
             <MovieDetailsVideo trailer={movieAllDetails.trailer} />
             <MovieDetailsText details={movieAllDetails.details } />
             <SimilarMovies similarMovies={movieAllDetails.similarMovies.results} />

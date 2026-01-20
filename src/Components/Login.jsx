@@ -82,15 +82,15 @@ const Login = () => {
       <div className='absolute'>
         <img src={NetflixBnr} alt='' />
       </div>
-      <form className='relative top-20 left-4/12 w-4/12 p-12 bg-black opacity-80 text-white' onSubmit={(e) => e.preventDefault()}>
-        <h1 className='font-bold text-3xl mb-6'>{!isSignIn ? "Sign Up" : "Sign In"}</h1>
+      <form className='relative top-20 left-4/12 w-4/12 p-12 bg-linear-60 from-red-800 to-black rounded-3xl text-white' onSubmit={(e) => e.preventDefault()}>
+        <h1 className='font-bold text-3xl mb-6 font-manrope'>{!isSignIn ? "Sign Up" : "Sign In"}</h1>
 
-        {!isSignIn && (<input ref={name} type="text" placeholder='Full Name' className='block my-3 border border-amber-50 p-3 rounded w-100' />)}
-        <input ref={email} type="text" placeholder='Email' className='block my-3 border border-amber-50 p-3 rounded w-100' />
-        <input ref={password} type="password" placeholder='Password' className='block my-3 border border-amber-50 p-3 rounded w-100' />
+        {!isSignIn && (<input ref={name} type="text" placeholder='Full Name' className='font-inter block my-3 border border-gray-800 p-3 rounded-3xl w-100' />)}
+        <input ref={email} type="text" placeholder='Email' className='font-inter block my-3 border border-gray-800 p-3 rounded-3xl w-100' />
+        <input ref={password} type="password" placeholder='Password' className='font-inter block my-3 border border-gray-800 p-3 rounded-3xl w-100' />
         <p className='text-red-800 text-lg py-2'>{errMessage}</p>
-        <button className='bg-red-800 text-center rounded text-white w-100 text-xl p-3 font-bold opacity-100 cursor-pointer' onClick={handleBtn}>{!isSignIn ? "Sign Up" : "Sign In"}</button>
-        <p className='text-gray-400 mt-6 cursor-pointer font-bold' onClick={toggleAuth}>{!isSignIn ? "Already User, Sign in now" : "New to Netflix ? Sign up now"}</p>
+        <button className='font-manrope text-center rounded-3xl w-100 p-3 opacity-100 font-bold text-base cursor-pointer text-gray-200 bg-black' onClick={handleBtn}>{!isSignIn ? "Sign Up" : "Sign In"}</button>
+        <p className='font-inter text-gray-400 mt-6 cursor-pointer font-bold' onClick={toggleAuth}>{!isSignIn ? "Already User, Sign in now" : "New to Netflix ? Sign up now"}</p>
       </form>
     </div>
   )

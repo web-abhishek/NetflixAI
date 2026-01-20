@@ -26,10 +26,6 @@ const Browse = () => {
             <SecondaryContainer />
           </>
       }
-      
-      
-
-
     </div>
   )
 }
