@@ -6,11 +6,12 @@ import NetflixBnr from '../assets/images/NetflixBnr.jpg'
 const Gpt = () => {
   return (
     <div>
-      <div className='absolute -z-10'>
-              <img src={NetflixBnr} alt='' />
-            </div>
-      <GptSearchBar />
-      <GptMovieSuggestion/>
+      <div className='relative'>
+        <img src={NetflixBnr} alt='' />
+        <GptSearchBar />
+        <GptMovieSuggestion/>
+      </div>
+      
     </div>
   )
 }

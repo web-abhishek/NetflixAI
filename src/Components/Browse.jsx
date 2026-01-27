@@ -7,6 +7,7 @@ import Gpt from './Gpt';
 import Header from './Header';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
+import { UseUpcomingMovies } from '../hooks/UseUpcomingMovies';
 
 const Browse = () => {
 
@@ -15,6 +16,7 @@ const Browse = () => {
   UseNowPlayingMovies();
   UsePopularMovies();
   UseTopRatedMovies();
+  UseUpcomingMovies();
 
   return (
     <div>

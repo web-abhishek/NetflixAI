@@ -13,8 +13,8 @@ const GptSearchBar = () => {
   UseGptSearchMovie();
 
   return (
-    <div className='pt-[10%] flex justify-center'>
-      <form className='w-1/2 bg-black grid grid-cols-12 rounded' onSubmit={(e)=> e.preventDefault()}>
+    <div className='absolute z-9 w-full top-0 pt-[10%] flex justify-center'>
+      <form className='w-1/2 bg-linear-60 from-red-800 to-black grid grid-cols-12 rounded' onSubmit={(e)=> e.preventDefault()}>
         <input className='col-span-9 p-4 m-4 bg-white border-none font-inter'
           ref={searchText}
           type="text"
