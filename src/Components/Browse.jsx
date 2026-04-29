@@ -7,6 +7,7 @@ import Gpt from './Gpt';
 import Header from './Header';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
+import Footer from './Footer';
 import { UseUpcomingMovies } from '../hooks/UseUpcomingMovies';
 
 const Browse = () => {
@@ -28,6 +29,7 @@ const Browse = () => {
             <SecondaryContainer />
           </>
       }
+      <Footer />
     </div>
   )
 }

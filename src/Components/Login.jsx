@@ -1,12 +1,12 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
-import NetflixBnr from '../assets/images/NetflixBnr.jpg'
-import { checkValidData } from '../Utilities/Validate';
+import NetflixBnr from '../assets/images/NetflixBnr.png'
+import { checkValidData } from '../utils/Validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from '../Utilities/firebase';
+import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../Utilities/userSlice';
-import { USER_AVATAR } from '../Utilities/Constants';
+import { addUser } from '../utils/userSlice';
+import { USER_AVATAR } from '../utils/Constants';
 
 
 const Login = () => {
@@ -80,14 +80,14 @@ const Login = () => {
     <div>
       <Header />
       <div className='absolute'>
-        <img src={NetflixBnr} alt='' />
+        <img src={NetflixBnr} alt='' className='' />
       </div>
       <form className='relative top-20 left-4/12 w-4/12 p-12 bg-linear-60 from-red-800 to-black rounded-3xl text-white' onSubmit={(e) => e.preventDefault()}>
         <h1 className='font-bold text-3xl mb-6 font-manrope'>{!isSignIn ? "Sign Up" : "Sign In"}</h1>
 
-        {!isSignIn && (<input ref={name} type="text" placeholder='Full Name' className='font-inter block my-3 border border-gray-800 p-3 rounded-3xl w-100' />)}
-        <input ref={email} type="text" placeholder='Email' className='font-inter block my-3 border border-gray-800 p-3 rounded-3xl w-100' />
-        <input ref={password} type="password" placeholder='Password' className='font-inter block my-3 border border-gray-800 p-3 rounded-3xl w-100' />
+        {!isSignIn && (<input ref={name} type="text" placeholder='Full Name' className='font-inter block my-3 border border-red-800 p-3 rounded-3xl w-100' />)}
+        <input ref={email} type="text" placeholder='Email' className='font-inter block my-3 border border-red-800 p-3 rounded-3xl w-100' />
+        <input ref={password} type="password" placeholder='Password' className='font-inter block my-3 border border-red-800 p-3 rounded-3xl w-100' />
         <p className='text-red-800 text-lg py-2'>{errMessage}</p>
         <button className='font-manrope text-center rounded-3xl w-100 p-3 opacity-100 font-bold text-base cursor-pointer text-gray-200 bg-black' onClick={handleBtn}>{!isSignIn ? "Sign Up" : "Sign In"}</button>
         <p className='font-inter text-gray-400 mt-6 cursor-pointer font-bold' onClick={toggleAuth}>{!isSignIn ? "Already User, Sign in now" : "New to Netflix ? Sign up now"}</p>

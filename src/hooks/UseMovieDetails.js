@@ -3,9 +3,9 @@ import {
     addMovieDetails,
     addMovieTrailer,
     addSimilarMovies
-} from "../Utilities/movieDetailsSlice";
-import { API_OPTION } from "../Utilities/Constants";
-import { showLoader, hideLoader } from "../Utilities/loaderSlice";
+} from "../utils/movieDetailsSlice";
+import { API_OPTION } from "../utils/Constants";
+import { showLoader, hideLoader } from "../utils/loaderSlice";
 import { useEffect } from "react";
 
 const UseMovieDetails = (movieId) => {

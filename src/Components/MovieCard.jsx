@@ -1,5 +1,5 @@
 import React from 'react'
-import { IMG_URL } from '../Utilities/Constants'
+import { IMG_URL } from '../utils/Constants'
 import { useNavigate } from 'react-router-dom'
 
 const MovieCard = ({ posterPath, movieId, title }) => {

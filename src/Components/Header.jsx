@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import NetflixLogo from '../assets/images/NetflixLogo.png';
 import { signOut } from "firebase/auth";
-import { auth } from '../Utilities/firebase';
+import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { onAuthStateChanged } from "firebase/auth";
-import { addUser, removeUser } from '../Utilities/userSlice';
-import { toggleGptSearchView } from '../Utilities/GptSearchSlice';
-import { SUPPORTED_LANGUAGES } from '../Utilities/Constants';
-import { changeLanguage } from '../Utilities/configSlice';
+import { addUser, removeUser } from '../utils/userSlice';
+import { toggleGptSearchView } from '../utils/GptSearchSlice';
+import { SUPPORTED_LANGUAGES } from '../utils/Constants';
+import { changeLanguage } from '../utils/configSlice';
 import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
@@ -66,15 +66,14 @@ const Header = () => {
               ))
             }
           </select>}
-          <button className='font-manrope border border-red-950 rounded b-li px-4 py-2 font-bold text-base cursor-pointer text-gray-200 bg-linear-60 from-red-800 to-black'
+          <button className='font-manrope rounded b-li px-4 py-2 font-bold text-base cursor-pointer text-gray-200 bg-linear-60 from-red-800'
             onClick={handleGptSearch}>{showGptSearch ? "All Movies" : (
-              <div className='flex gap-2 items-center'
-              >
-      GPT Search <FaSearch />
-    </div>
+              <p className='flex gap-2 items-center text-sm'>
+                GPT Search <FaSearch />
+              </p>
   )}</button>
           <img className='rounded-full w-8 h-8' src={user.photoURL} />
-          <button className='font-manrope font-bold text-base cursor-pointer text-gray-200'
+          <button className='font-manrope font-bold text-sm cursor-pointer text-gray-200'
             onClick={handleSignOut}>Sign Out</button>
         </div>
       )}
@@ -83,4 +82,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;

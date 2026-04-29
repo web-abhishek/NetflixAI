@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
-import openai from '../Utilities/openai';
-import { API_OPTION } from '../Utilities/Constants';
-import { addGptMovieResult } from '../Utilities/GptSearchSlice';
+import openai from '../utils/openai';
+import { API_OPTION } from '../utils/Constants';
+import { addGptMovieResult } from '../utils/GptSearchSlice';
 import { useDispatch } from 'react-redux';
 
 export const UseGptSearchMovie = () => {

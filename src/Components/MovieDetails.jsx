@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import MovieDetailsText from './MovieDetailsText';
 import MovieDetailsVideo from './MovieDetailsVideo';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearMovieDetails } from '../Utilities/movieDetailsSlice';
+import { clearMovieDetails } from '../utils/movieDetailsSlice';
 import { useParams } from 'react-router-dom';
 import UseMovieDetails from '../hooks/UseMovieDetails';
 import SimilarMovies from './SimilarMovies';
