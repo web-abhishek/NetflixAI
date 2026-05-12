@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
-import NetflixBnr from '../assets/images/NetflixBnr1.jpg'
+import NetflixBnr1 from '../assets/images/NetflixBnr1.jpg'
 import { checkValidData } from '../utils/Validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
@@ -79,7 +79,7 @@ const Login = () => {
     <div>
       <Header />
       <div className='absolute'>
-        <img src={NetflixBnr} alt='' className='' />
+        <img src={NetflixBnr1} alt='' className='' />
       </div>
       <form className='relative top-20 left-4/12 w-4/12 p-12 bg-linear-60 from-red-800 to-black rounded-3xl text-white' onSubmit={(e) => e.preventDefault()}>
         <h1 className='font-bold text-3xl mb-6 font-manrope'>{!isSignIn ? "Sign Up" : "Sign In"}</h1>
