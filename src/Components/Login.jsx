@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
-import NetflixBnr from '../assets/images/NetflixBnr.png'
+import NetflixBnr from '../assets/images/NetflixBnr1.jpg'
 import { checkValidData } from '../utils/Validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
@@ -74,7 +74,6 @@ const Login = () => {
   const toggleAuth = () => {
     setIsSignIn(!isSignIn)
   }
-
 
   return (
     <div>
