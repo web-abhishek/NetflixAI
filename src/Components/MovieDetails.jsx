@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import MovieDetailsText from './MovieDetailsText';
 import MovieDetailsVideo from './MovieDetailsVideo';
+import MovieDetailsShimmer from './MovieDetailsShimmer';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMovieDetails } from '../utils/movieDetailsSlice';
 import { useParams } from 'react-router-dom';
@@ -14,6 +15,8 @@ const MovieDetails = () => {
     UseMovieDetails(movieId);
 
     const movieAllDetails = useSelector((store) => store.movieDetails);
+    const isLoading = useSelector((store) => store.loader.isLoading);
+    
     console.log(movieAllDetails.details);
     // console.log(movieAllDetails.similarMovies.results);
     // console.log(movieAllDetails.trailer.results);
@@ -24,6 +27,8 @@ const MovieDetails = () => {
             dispatch(clearMovieDetails());
         };
     }, [])
+
+    if (isLoading) return <MovieDetailsShimmer />;
 
     return (
         <div className='min-h-screen'>
