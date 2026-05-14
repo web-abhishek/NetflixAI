@@ -79,14 +79,22 @@ const Login = () => {
     <div>
       <Header />
       <div className='absolute'>
-        <img src={NetflixBnr1} alt='' className='' />
+        <img src={NetflixBnr1} alt='' className='h-screen w-screen object-cover' />
       </div>
-      <form className='relative top-20 left-4/12 w-4/12 p-12 bg-black  rounded-3xl text-white' onSubmit={(e) => e.preventDefault()}>
+      <form className='relative top-35 left-4/12 w-100 p-12 bg-gray-950 shadow-2xs shadow-red-900 rounded-3xl text-white' onSubmit={(e) => e.preventDefault()}>
         <h1 className='font-bold text-center text-gray-300 text-3xl mb-10 font-manrope'>{!isSignIn ? "Sign Up" : "Sign In"}</h1>
 
-        {!isSignIn && (<input ref={name} type="text" placeholder='Full Name' className='font-inter block my-3 shadow-2xl p-3 rounded-3xl w-100' />)}
-        <input ref={email} type="text" placeholder='Email' className='font-inter block my-3  shadow-xs shadow-red-900 p-3 rounded-3xl w-100' />
-        <input ref={password} type="password" placeholder='Password' className='font-inter block my-3  shadow-xs shadow-red-900 p-3 rounded-3xl w-100' />
+        {!isSignIn && (<input ref={name} type="text" placeholder='Full Name'
+          className='font-inter block my-3  shadow-xs shadow-red-900 focus:ring-2 
+          focus:ring-red-900 focus:outline-none p-3 rounded-3xl w-100' />)}
+        
+        <input ref={email} type="text" placeholder='Email'
+          className='font-inter block my-3 shadow-xs shadow-red-900 focus:ring-2 
+          focus:ring-red-900 focus:outline-none p-3 rounded-3xl outline-red-900 w-100' />
+        
+        <input ref={password} type="password" placeholder='Password'
+          className='font-inter block my-3 shadow-xs shadow-red-900 focus:ring-2 
+          focus:ring-red-900 focus:outline-none  p-3 rounded-3xl outline-red-900 w-100' />
 
         <p className='text-red-800 text-lg py-2'>{errMessage}</p>
 
@@ -94,7 +102,11 @@ const Login = () => {
         bg-linear-50 from-red-800 hover:bg-linear-20 transition-colors duration-300 outline-none' onClick={handleBtn}>
           {!isSignIn ? "Sign Up" : "Sign In"}
         </button>
-        <p className='font-inter text-gray-400 mt-6 cursor-pointer font-bold' onClick={toggleAuth}>{!isSignIn ? "Already User, Sign in now" : "New to Netflix ? Sign up now"}</p>
+
+        <p className='font-inter text-gray-400 mt-6 cursor-pointer font-bold'
+          onClick={toggleAuth}>{!isSignIn ? "Already User, Sign in now" : "New to Netflix ? Sign up now"}
+        </p>
+
       </form>
     </div>
   )
