@@ -7,21 +7,20 @@ import { UseGptSearchMovie } from '../hooks/UseGptSearchMovie';
 const GptSearchBar = () => {
 
   const langKey = useSelector(store => store.config.lang);
-  
-
   const { searchText, handleGptSearchClick } = UseGptSearchMovie();
-  UseGptSearchMovie();
 
   return (
-    <div className='absolute z-9 w-full top-0 pt-[10%] flex justify-center'>
-      <form className='w-1/2 bg-linear-60 from-red-800 to-black grid grid-cols-12 rounded' onSubmit={(e)=> e.preventDefault()}>
-        <input className='col-span-9 p-4 m-4 bg-white border-none font-inter'
+    <div className='relative z-20 w-full px-4'>
+      <form className='mx-auto flex w-full max-w-4xl flex-col gap-4 rounded-4xl border border-white/10 bg-black/70 p-4 shadow-card backdrop-blur-xl md:flex-row'
+        onSubmit={(e) => e.preventDefault()}>
+        <input className='min-h-16 flex-1 rounded-2xl border border-white/10 bg-white/10 px-5 text-white outline-none placeholder:text-gray-400 focus:border-red-500 focus:ring-2 focus:ring-red-500/20'
           ref={searchText}
           type="text"
-          placeholder={lang[langKey].gptSearchPlaceholder} />
+          placeholder={lang[langKey].gptSearchPlaceholder}
+          autoComplete='off' />
         <button
-          className="font-manrope col-span-3 m-4 bg-red-800 text-center rounded text-white text-xl font-bold opacity-100 cursor-pointer"
-        onClick={handleGptSearchClick}>
+          className='min-h-16 rounded-2xl bg-linear-to-r from-red-600 via-red-500 to-pink-600 px-6 text-base font-semibold uppercase tracking-[0.08em] text-white transition duration-200 hover:brightness-110'
+          onClick={handleGptSearchClick}>
           {lang[langKey].search}
         </button>
       </form>

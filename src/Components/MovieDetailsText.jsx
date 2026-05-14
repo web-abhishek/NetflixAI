@@ -7,18 +7,16 @@ const MovieDetailsText = ({details}) => {
     // console.log(title);
     
     return (
-        <div className="flex flex-col gap-4 mx-30 my-15">
-            <div className="flex justify-start gap-10 items-end">
-                <h1 className="font-manrope text-4xl font-bold text-gray-200"> {title} </h1>
-                <p className="text-base text-gray-400 font-inter">
-   {genres?.map(g => g.name).join(" · ")}
-</p>
+        <div className="flex flex-col gap-6">
+            <div className="space-y-4">
+                <h1 className="font-manrope text-4xl font-bold text-white">{title}</h1>
+                <p className="text-base text-gray-300 font-inter">{genres?.map(g => g.name).join(' · ')}</p>
             </div>
-            <div className="flex gap-5">
-                <p className="text-base text-gray-400 font-inter">Language : { original_language}</p>
-                <p className="text-base text-gray-400 font-inter">Votes : { vote_average} out of 10</p>
+            <div className="flex flex-wrap gap-4 text-sm text-gray-300">
+                <span className="rounded-full bg-white/5 px-3 py-2">Language: {original_language}</span>
+                <span className="rounded-full bg-white/5 px-3 py-2">Votes: {vote_average} / 10</span>
             </div>
-            <p className="text-base text-gray-400 w-2xl font-inter"> {overview} </p>
+            <p className="text-base leading-8 text-gray-300 max-w-3xl font-inter">{overview}</p>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import VideoTitle from './VideoTitle'
 import VideoBackground from './VideoBackground'
 import MainContainerShimmer from './MainContainerShimmer'
@@ -26,4 +26,4 @@ const MainContainer = () => {
     )
 }
 
-export default MainContainer
+export default MainContainer;

@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import MovieCard from './MovieCard'
 import ShimmerLoader from './ShimmerLoader'
 import { useSelector } from 'react-redux'
@@ -9,7 +9,7 @@ const MovieList = ({ title, movies }) => {
 
   return (
     <div className='text-gray-400 mx-10'>
-      <h2 className="font-extrabold text-2xl py-5 pt-7 font-manrope"> {title} </h2>
+      {/* <h2 className="font-extrabold text-2xl py-5 pt-7 font-manrope"> {title} </h2> */}
       {isLoading ? (
         <ShimmerLoader count={6} />
       ) : (

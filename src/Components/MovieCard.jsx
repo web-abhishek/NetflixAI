@@ -1,36 +1,22 @@
-import React from 'react'
+﻿import React from 'react'
 import { IMG_URL } from '../utils/Constants'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const MovieCard = ({ posterPath, movieId, title }) => {
-  const navigate = useNavigate();
-
-  const handleMovieDetails = () => {
-    navigate(`/movie/${movieId}`);
-  }
-
   if (!posterPath) return null;
 
   return (
-    <div className="shrink-0 cursor-pointer" onClick={handleMovieDetails}>
-      <div className="relative w-[260px] h-[260px] rounded-2xl overflow-hidden">
-
+    <Link to={`/movie/${movieId}`} className='group shrink-0 w-[260px] overflow-hidden rounded-2xl shadow-card transition duration-300 hover:-translate-y-1'>
+      <div className='relative h-[260px] w-full overflow-hidden rounded-2xl'>
         <img
-          className="w-full h-auto object-cover bg-top"
+          className='h-full w-full object-cover transition duration-500 group-hover:scale-105'
           src={IMG_URL + posterPath}
-          alt="card-images"
+          alt={title}
         />
-
-        <div className="absolute inset-0 bg-linear-to-t from-black to-transparent"></div>
-
+        <div className='absolute inset-0 bg-linear-to-t from-black to-transparent' />
       </div>
-
-      <h3 className="font-medium text-base text-gray-400 my-3 w-[250px] font-manrope">
-        {title}
-      </h3>
-    </div>
-
-
+      <h3 className='mt-3 truncate text-base font-medium text-gray-200 font-manrope'>{title}</h3>
+    </Link>
   )
 }
 

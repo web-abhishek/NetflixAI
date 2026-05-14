@@ -30,11 +30,43 @@ const MovieDetails = () => {
 
     if (isLoading) return <MovieDetailsShimmer />;
 
+    const details = movieAllDetails.details;
+    const posterPath = details?.poster_path;
+    const backdropPath = details?.backdrop_path;
+
     return (
-        <div className='min-h-screen'>
-            <MovieDetailsVideo trailer={movieAllDetails.trailer} />
-            <MovieDetailsText details={movieAllDetails.details } />
-            <SimilarMovies similarMovies={movieAllDetails.similarMovies.results} />
+        <div className='min-h-screen bg-[#050505] text-white'>
+            <Header />
+            <div className='relative'>
+                {backdropPath && (
+                    <div className='absolute inset-0 -z-10'>
+                        <img
+                            className='h-full w-full object-cover opacity-30'
+                            src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
+                            alt={details?.title || 'Movie backdrop'}
+                        />
+                        <div className='absolute inset-0 bg-black/80' />
+                    </div>
+                )}
+                <div className='relative mx-auto max-w-7xl px-6 py-10 lg:px-10'>
+                    <div className='grid gap-8 lg:grid-cols-[360px_1fr]'>
+                        {posterPath && (
+                            <div className='rounded-3xl overflow-hidden shadow-card'>
+                                <img
+                                    src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
+                                    alt={details?.title || 'Movie poster'}
+                                    className='h-full w-full object-cover'
+                                />
+                            </div>
+                        )}
+                        <div className='rounded-3xl border border-white/10 bg-black/60 p-8 shadow-card backdrop-blur-xl'>
+                            <MovieDetailsText details={details} />
+                        </div>
+                    </div>
+                    <MovieDetailsVideo trailer={movieAllDetails.trailer} />
+                    <SimilarMovies similarMovies={movieAllDetails.similarMovies?.results} />
+                </div>
+            </div>
         </div>
     )
 }

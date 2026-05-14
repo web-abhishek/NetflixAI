@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react'
-import Header from './Header'
-import NetflixBnr1 from '../assets/images/NetflixBnr1.jpg'
+import { useNavigate, Link } from 'react-router-dom';
 import { checkValidData } from '../utils/Validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 import { USER_AVATAR } from '../utils/Constants';
+import NetflixBnr1 from '../assets/images/NetflixBnr1.jpg'
 import hide from '../assets/images/hide.png';
 import show from '../assets/images/show.png';
-
+import NetflixLogo from '../assets/images/NetflixLogo.png';
 
 const Login = () => {
 
@@ -19,12 +19,18 @@ const Login = () => {
   const [showPass, setShowPass] = useState(false);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
   const handleBtn = () => {
+
+    if (!isSignIn && !name.current?.value.trim()) {
+      setErrMessage('Full name is required for sign up');
+      return;
+    }
 
     const message = checkValidData(email.current.value, password.current.value);
     setErrMessage(message);
@@ -34,41 +40,33 @@ const Login = () => {
     if (!isSignIn) {
       createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
-          // Signed up 
           const user = userCredential.user;
 
           updateProfile(user, {
             displayName: name.current.value,
             photoURL: USER_AVATAR
           }).then(() => {
-            // Profile updated!
-            const { uid, email, displayName, photoURL } = auth.currentUser;
-            dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
-
+            const { uid, email: userEmail, displayName, photoURL } = auth.currentUser;
+            dispatch(addUser({ uid, email: userEmail, displayName, photoURL }));
+            navigate('/browse');
           }).catch((error) => {
-            // An error occurred
             setErrMessage(error.message);
           });
 
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-
-          setErrMessage(errorCode + "-" + errorMessage)
+          setErrMessage(`${error.code}: ${error.message}`);
         });
     }
     else {
       signInWithEmailAndPassword(auth, email.current.value, password.current.value)
         .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
+          const { uid, email: userEmail, displayName, photoURL } = userCredential.user;
+          dispatch(addUser({ uid, email: userEmail, displayName, photoURL }));
+          navigate('/browse');
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-
-          setErrMessage(errorCode + "-" + errorMessage)
+          setErrMessage(`${error.code}: ${error.message}`);
         });
     }
 
@@ -80,7 +78,9 @@ const Login = () => {
 
   return (
     <div>
-      <Header />
+      <Link to="/">
+        <img src={NetflixLogo} alt="NetflixAI" className='w-28 object-contain absolute top-5 left-5 z-50' />
+      </Link>
       <div className='relative'>
         <img src={NetflixBnr1} alt='' className='h-screen w-screen object-cover' />
       </div>
@@ -105,7 +105,7 @@ const Login = () => {
             {showPass ? <img src={hide} alt="Hide" className='w-10 h-10 invert' /> : <img src={show} alt="Show" className='w-8 h-8 invert' />}
           </button>
         </div>
-        <p className='text-red-800 text-lg py-2'>{errMessage}</p>
+        <p className='text-red-400 text-sm py-2'>{errMessage || ""}</p>
 
         <button className='font-manrope text-center rounded-3xl p-3 opacity-100 font-bold text-base cursor-pointer text-gray-200 
         bg-linear-50 from-red-800 hover:bg-linear-20 transition-colors duration-300 outline-none w-full' onClick={handleBtn}>

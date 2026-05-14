@@ -1,4 +1,17 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+  color: #e5e7eb;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 30%), #050505;
+  color: #f8fafc;
+  font-family: "Inter", sans-serif;
+}
 
 @keyframes shimmer {
   0% {
@@ -23,15 +36,49 @@
   display: none;
 }
 
-.bg-d{
+.bg-d {
   background-color: #0F0F0F;
 }
-.shadow-d{
-  box-shadow: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
+
+.bg-linear-to-b {
+  background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
-.font-inter{
+
+.bg-linear-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.bg-linear-to-t {
+  background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
+.bg-linear-60 {
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.12));
+}
+
+.b-li {
+  background-image: linear-gradient(90deg, rgba(239, 68, 68, 0.95), rgba(236, 72, 153, 0.9));
+}
+
+.glass-card {
+  background: rgba(10, 10, 10, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+}
+
+.header-glass {
+  background: rgba(10, 10, 10, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.shadow-card {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.font-inter {
   font-family: "Inter", sans-serif;
 }
-.font-manrope{
+
+.font-manrope {
   font-family: "Manrope", sans-serif;
 }

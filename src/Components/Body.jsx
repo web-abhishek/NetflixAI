@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './Login'
 import Browse from './Browse'
 import MovieDetails from './MovieDetails'
-
+import Shows from './Shows'
 const appRouter = createBrowserRouter(
   [
     {
@@ -17,6 +17,10 @@ const appRouter = createBrowserRouter(
     {
       path: '/movie/:movieId',
       element: <MovieDetails />
+    },
+    {
+      path: 'shows',
+      element: <Shows/>
     }
   ]
 )
