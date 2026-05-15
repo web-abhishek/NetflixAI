@@ -55,9 +55,9 @@ const Header = () => {
   }
 
   return (
-    <header className="sticky top-0 z-30 w-full header-glass backdrop-blur-xl px-6 py-4">
+    <header className="sticky top-0 z-30 w-full header-glass backdrop-blur-xl px-6 py-2">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4">
-        <Link to="/">
+        <Link to="/browse">
           <img src={NetflixLogo} alt="NetflixAI" className='w-28 object-contain' />
         </Link>
         {user && (
@@ -72,7 +72,7 @@ const Header = () => {
                 }
               </select>
             )}
-            <button className='rounded-2xl border border-transparent bg-linear-to-r from-red-600 via-red-500 to-pink-600 px-4 py-2 text-sm font-semibold text-white shadow-card transition duration-200 hover:brightness-110'
+            <button className='rounded-2xl border border-transparent bg-gradient-to-r from-red-600 via-red-500 to-pink-600 px-4 py-2 text-sm font-semibold text-white shadow-card transition duration-200 hover:brightness-110'
               onClick={handleGptSearch}>
               {showGptSearch ? "All Movies" : (
                 <span className='flex items-center gap-2'>

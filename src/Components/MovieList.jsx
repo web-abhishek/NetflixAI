@@ -8,8 +8,8 @@ const MovieList = ({ title, movies }) => {
   // console.log(title, movies);
 
   return (
-    <div className='text-gray-400 mx-10'>
-      {/* <h2 className="font-extrabold text-2xl py-5 pt-7 font-manrope"> {title} </h2> */}
+    <div className='text-gray-400 mx-10 py-3'>
+      <h2 className="font-extrabold text-2xl py-5 pt-7 font-manrope"> {title} </h2>
       {isLoading ? (
         <ShimmerLoader count={6} />
       ) : (

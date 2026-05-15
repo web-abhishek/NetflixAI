@@ -36,8 +36,9 @@ const MovieDetails = () => {
 
     return (
         <div className='min-h-screen bg-[#050505] text-white'>
-            <Header />
+             
             <div className='relative'>
+                <MovieDetailsVideo trailer={movieAllDetails.trailer} />
                 {backdropPath && (
                     <div className='absolute inset-0 -z-10'>
                         <img
@@ -63,7 +64,7 @@ const MovieDetails = () => {
                             <MovieDetailsText details={details} />
                         </div>
                     </div>
-                    <MovieDetailsVideo trailer={movieAllDetails.trailer} />
+                    
                     <SimilarMovies similarMovies={movieAllDetails.similarMovies?.results} />
                 </div>
             </div>
