@@ -8,7 +8,7 @@ const GptMovieSuggestion = () => {
     <div className="px-4 py-8 flex flex-row flex-wrap gap-8">
       {movieName?.map((movie, index) => (
         <div key={movie} className="space-y-4">
-          <div className="flex gap-5 items-center justify-start">
+          <div className="flex gap-5 items-center flex-wrap">
             {movieResults[index]?.map((movieItem) => (
               <GptMovieLists
                 key={movieItem.id}

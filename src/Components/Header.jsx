@@ -10,6 +10,7 @@ import { toggleGptSearchView } from '../utils/GptSearchSlice';
 import { SUPPORTED_LANGUAGES } from '../utils/Constants';
 import { changeLanguage } from '../utils/configSlice';
 import { FaSearch } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 const Header = () => {
 
@@ -72,7 +73,14 @@ const Header = () => {
                 }
               </select>
             )}
-            <button className='rounded-2xl border border-transparent bg-gradient-to-r from-red-600 via-red-500 to-pink-600 px-4 py-2 text-sm font-semibold text-white shadow-card transition duration-200 hover:brightness-110'
+            <button className='rounded-2xl border 
+            border-red-500 px-4 py-2 text-sm font-semibold text-white shadow-card
+            transition duration-200 hover:brightness-110'>
+              <span className='flex items-center gap-2'>
+                  WatchList <FaRegHeart className='text-red-500'/>
+                </span>
+            </button>
+            <button className='rounded-2xl border border-transpare  nt bg-gradient-to-r from-red-600 via-red-500 to-pink-600 px-4 py-2 text-sm font-semibold text-white shadow-card transition duration-200 hover:brightness-110'
               onClick={handleGptSearch}>
               {showGptSearch ? "All Movies" : (
                 <span className='flex items-center gap-2'>
