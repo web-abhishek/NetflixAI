@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
-import MovieDetailsText from './MovieDetailsText';
-import MovieDetailsVideo from './MovieDetailsVideo';
-import MovieDetailsShimmer from './MovieDetailsShimmer';
+import MovieDetailsText from '../components/MovieDetailsText';
+import MovieDetailsVideo from '../components/MovieDetailsVideo';
+import MovieDetailsShimmer from '../components/MovieDetailsShimmer';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearMovieDetails } from '../utils/movieDetailsSlice';
 import { useParams } from 'react-router-dom';
 import UseMovieDetails from '../hooks/UseMovieDetails';
-import SimilarMovies from './SimilarMovies';
-import Header from './Header';
+import SimilarMovies from '../components/SimilarMovies';
+import Header from '../components/Header';
 
 const MovieDetails = () => {
     const { movieId } = useParams();

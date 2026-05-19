@@ -48,7 +48,7 @@ const Login = () => {
           }).then(() => {
             const { uid, email: userEmail, displayName, photoURL } = auth.currentUser;
             dispatch(addUser({ uid, email: userEmail, displayName, photoURL }));
-            navigate('/browse');
+            navigate('/home');
           }).catch((error) => {
             setErrMessage(error.message);
           });
@@ -63,7 +63,7 @@ const Login = () => {
         .then((userCredential) => {
           const { uid, email: userEmail, displayName, photoURL } = userCredential.user;
           dispatch(addUser({ uid, email: userEmail, displayName, photoURL }));
-          navigate('/browse');
+          navigate('/home');
         })
         .catch((error) => {
           setErrMessage(`${error.code}: ${error.message}`);
@@ -78,9 +78,9 @@ const Login = () => {
 
   return (
     <div>
-      <Link to="/">
+      {/* <Link to="/">
         <img src={NetflixLogo} alt="NetflixAI" className='w-28 object-contain absolute top-5 left-5 z-50' />
-      </Link>
+      </Link> */}
       <div className='relative'>
         <img src={NetflixBnr1} alt='' className='h-screen w-screen object-cover' />
       </div>

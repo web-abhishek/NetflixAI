@@ -1,18 +1,17 @@
   import './App.css'
-  import { useSelector } from "react-redux"
-  import Body from './Components/Body';
-  import PageLoader from './Components/PageLoader';
+  import { useSelector } from 'react-redux'
+  import AppRouter from './routes/AppRouter'
+  import PageLoader from './components/PageLoader'
 
   function App() {
-
-    const isLoading = useSelector((store) => store.loader.isLoading);
+    const isLoading = useSelector((store) => store.loader.isLoading)
 
     return (
-      <div className='bg-d'>
+      <div className="bg-d">
         {isLoading && <PageLoader />}
-        <Body />
+        <AppRouter />
       </div>
     )
   }
 
-  export default App;
+  export default App
