@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { use } from 'react'
+import { useSelector } from 'react-redux'
 
 const TopRated = () => {
+  const topRated = useSelector(store => store.movies.topRatedMovies);
+  console.log(topRated);
   return (
-    <div>Top-rated</div>
+    <div></div>
   )
 }
 
