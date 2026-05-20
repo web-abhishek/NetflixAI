@@ -24,8 +24,10 @@ export const UseTopRatedMovies = () => {
     }
 
     useEffect(() => {
-        !topRatedMovies && getTopRatedMovies();
-    }, [])
+    if (!topRatedMovies) {
+        getTopRatedMovies();
+    }
+}, []);
 
 
 }
