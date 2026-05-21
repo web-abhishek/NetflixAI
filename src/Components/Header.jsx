@@ -98,16 +98,18 @@ const Header = () => {
               <div onClick={() => setUserProfileOpen(!userProfileOpen)} className='flex cursor-pointer items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-100 transition'>
                 <img className='h-10 w-10 rounded-full object-cover' src={user.photoURL} alt={user.displayName || 'User'} />
                 <IoIosArrowDown />
-              </div>
+              </div>  
               {
                 userProfileOpen && (
-                  <div className='absolute right-4 mt-2 w-48 rounded-md bg-white/10 backdrop-blur-lg shadow-lg py-2 z-50'>
-                    <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
-                       transition duration-200 hover:brightness-110 cursor-pointer w-full text-left'>
-                      <span className='flex items-center gap-2'>
-                        <FaRegHeart className='text-red-500' /> Favourite
-                      </span>
-                    </button>
+                  <div className='absolute right-4 mt-2 w-48 rounded-md bg-black/90 backdrop-blur-lg shadow-lg py-2 z-50'>
+                   <Link to="/favourite">
+                      <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
+                          transition duration-200 hover:brightness-110 cursor-pointer w-full text-left'>
+                         <span className='flex items-center gap-2'>
+                            <FaRegHeart className='text-red-500' /> Favourite
+                         </span>
+                      </button>
+                   </Link>
 
                     <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
                        transition duration-200 hover:brightness-110 cursor-pointer w-full text-left'>

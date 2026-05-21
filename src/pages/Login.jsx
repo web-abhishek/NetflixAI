@@ -78,9 +78,6 @@ const Login = () => {
 
   return (
     <div>
-      {/* <Link to="/">
-        <img src={NetflixLogo} alt="NetflixAI" className='w-28 object-contain absolute top-5 left-5 z-50' />
-      </Link> */}
       <div className='relative'>
         <img src={NetflixBnr1} alt='' className='h-screen w-screen object-cover' />
       </div>

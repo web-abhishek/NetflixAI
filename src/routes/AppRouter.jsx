@@ -10,6 +10,7 @@ import Popular from '../pages/Popular'
 import Upcoming from '../pages/Upcoming'
 import Shows from '../pages/Shows'
 import NotFound from '../pages/NotFound'
+import ComingSoon from '../components/ComingSoon'
 
 const router = createBrowserRouter([
     {
@@ -23,14 +24,11 @@ const router = createBrowserRouter([
             { path: 'trending', element: <Trending /> },
             { path: 'popular', element: <Popular /> },
             { path: 'upcoming', element: <Upcoming /> },
+            { path: 'favourite', element: <ComingSoon /> },
             { path: 'shows', element: <Shows /> },
             { path: '*', element: <NotFound /> },
         ],
-    },
-    {
-        path: '/',
-        element: <Login />,
-    },
+    }
 ])
 
 const AppRouter = () => <RouterProvider router={router} />
