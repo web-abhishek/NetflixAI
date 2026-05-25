@@ -1,4 +1,3 @@
-  import './App.css'
   import { useSelector } from 'react-redux'
   import AppRouter from './routes/AppRouter'
   import PageLoader from './components/PageLoader'
