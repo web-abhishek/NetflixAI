@@ -18,6 +18,8 @@ import { LiaSignOutAltSolid } from "react-icons/lia";
 const Header = () => {
 
   const [userProfileOpen, setUserProfileOpen] = useState(false);
+  // const [showSuggestions, setShowSuggestions] = useState(false);
+
   const navigate = useNavigate();
   const user = useSelector(store => store.user);
   const dispatch = useDispatch();
@@ -95,12 +97,20 @@ const Header = () => {
             </button>
             <div>
 
-              <div onClick={() => setUserProfileOpen(!userProfileOpen)} className='flex cursor-pointer items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-100 transition'>
-                <img className='h-10 w-10 rounded-full object-cover' src={user.photoURL} alt={user.displayName || 'User'} />
-                <IoIosArrowDown />
-              </div>  
+              <div className='flex cursor-pointer items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-100 transition'
+                onClick={() => setUserProfileOpen(!userProfileOpen)}
+                onFocus={(e) => setUserProfileOpen(false)}
+                onBlur={(e) => setUserProfileOpen(false)}
+              > 
+                <img className='h-10 w-10 rounded-full object-cover'
+                  src={user.photoURL} alt={user.displayName || 'User'} />
+                <IoIosArrowDown className={`transition-transform duration-200 
+                ${
+                  userProfileOpen ? 'rotate-180' : ''
+                }`} />
+              </div>
               {
-                userProfileOpen && (
+               userProfileOpen && (
                   <div className='absolute right-4 mt-2 w-48 rounded-md bg-black/90 backdrop-blur-lg shadow-lg py-2 z-50'>
                    <Link to="/favourite">
                       <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
@@ -111,12 +121,12 @@ const Header = () => {
                       </button>
                    </Link>
 
-                    <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
+                    {/* <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
                        transition duration-200 hover:brightness-110 cursor-pointer w-full text-left'>
                       <span className='flex items-center gap-2'>
                         <IoInvertMode className='text-red-500' /> Light/Dark Mode
                       </span>
-                    </button>
+                    </button> */}
 
                     <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
                        transition duration-200 hover:brightness-110 cursor-pointer w-full text-left'

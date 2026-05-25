@@ -8,8 +8,10 @@ import { useParams } from 'react-router-dom';
 import UseMovieDetails from '../hooks/UseMovieDetails';
 import SimilarMovies from '../components/SimilarMovies';
 import Header from '../components/Header';
+import Gpt from '../components/Gpt';
 
 const MovieDetails = () => {
+    const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
     const { movieId } = useParams();
     const dispatch = useDispatch();
     UseMovieDetails(movieId);
@@ -35,8 +37,10 @@ const MovieDetails = () => {
     const backdropPath = details?.backdrop_path;
 
     return (
-        <div className='min-h-screen bg-[#050505] text-white'>
-             
+    <div>
+        {
+        showGptSearch ? <Gpt /> :
+        <div className='min-h-screen bg-[#050505] text-white'> 
             <div className='relative'>
                 <MovieDetailsVideo trailer={movieAllDetails.trailer} />
                 {backdropPath && (
@@ -69,6 +73,8 @@ const MovieDetails = () => {
                 </div>
             </div>
         </div>
+            }
+            </div>
     )
 }
 
