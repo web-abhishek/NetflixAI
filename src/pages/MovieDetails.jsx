@@ -41,36 +41,36 @@ const MovieDetails = () => {
         {
         showGptSearch ? <Gpt /> :
         <div className='min-h-screen bg-[#050505] text-white'> 
-            <div className='relative'>
-                <MovieDetailsVideo trailer={movieAllDetails.trailer} />
-                {backdropPath && (
-                    <div className='absolute inset-0 -z-10'>
-                        <img
-                            className='h-full w-full object-cover opacity-30'
-                            src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
-                            alt={details?.title || 'Movie backdrop'}
-                        />
-                        <div className='absolute inset-0 bg-black/80' />
-                    </div>
-                )}
-                <div className='relative mx-auto max-w-7xl px-6 py-10 lg:px-10'>
-                    <div className='grid gap-8 lg:grid-cols-[360px_1fr]'>
+                        <div className='relative'>
+                            <div className='relative mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 lg:py-12'>
+                    <div className='grid gap-6 sm:gap-8 grid-cols-1 md:grid-cols-[280px_1fr] lg:grid-cols-[360px_1fr]'>
                         {posterPath && (
-                            <div className='rounded-3xl overflow-hidden shadow-card'>
+                            <div className='rounded-2xl sm:rounded-3xl overflow-hidden shadow-card mx-auto md:mx-0 w-full md:w-auto'>
                                 <img
                                     src={`https://image.tmdb.org/t/p/w500/${posterPath}`}
                                     alt={details?.title || 'Movie poster'}
-                                    className='h-full w-full object-cover'
+                                    className='h-full w-full sm:w-80 md:w-72 lg:w-80 object-cover aspect-[2/3]'
                                 />
                             </div>
                         )}
-                        <div className='rounded-3xl border border-white/10 bg-black/60 p-8 shadow-card backdrop-blur-xl'>
+                        <div className='rounded-2xl sm:rounded-3xl border border-white/10 bg-black/60 p-6 sm:p-8 shadow-card backdrop-blur-xl'>
                             <MovieDetailsText details={details} />
                         </div>
                     </div>
-                    
+                    <MovieDetailsVideo trailer={movieAllDetails.trailer} />
+                {backdropPath && (
+                    <div className='absolute inset-0 -z-10 hidden sm:block'>
+                        <img
+                            className='h-full w-full object-cover opacity-20'
+                            src={`https://image.tmdb.org/t/p/original/${backdropPath}`}
+                            alt={details?.title || 'Movie backdrop'}
+                        />
+                        <div className='absolute inset-0 bg-black/70' />
+                    </div>
+                )}
                     <SimilarMovies similarMovies={movieAllDetails.similarMovies?.results} />
                 </div>
+                
             </div>
         </div>
             }

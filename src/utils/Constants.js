@@ -12,9 +12,9 @@ export const API_OPTION = {
 export const IMG_URL = "https://image.tmdb.org/t/p/w500/";
 
 export const SUPPORTED_LANGUAGES = [
-  { identifier: "en", name: "English" },
-  { identifier: "hindi", name: "Hindi" },
-  { identifier: "spanish", name: "Spanish" },
+  { identifier: "en", name: "Eng" },
+  { identifier: "hindi", name: "Hin" },
+  { identifier: "spanish", name: "Spa" },
 ]
 
 // export const OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY

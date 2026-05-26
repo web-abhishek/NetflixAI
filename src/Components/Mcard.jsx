@@ -9,17 +9,19 @@ const Mcard = ({ movie }) => {
   if (!poster_path) return null;
   
     return (
-    <Link to={`/movie/${id}`} className='group shrink-0 w-[300px] overflow-hidden rounded-2xl shadow-card transition duration-300 hover:-translate-y-1'>
-    <div>
-        <div className='relative h-auto w-full overflow-hidden rounded-2xl'>
-          <div className='absolute top-0 left-0 inset-0 bg-linear-to-t from-black to-transparent z-10' />
+    <Link to={`/movie/${id}`} className='group w-full overflow-hidden rounded-3xl shadow-xl shadow-black/20 transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl'>
+      <div className='overflow-hidden rounded-3xl bg-slate-950/50'>
+        <div className='relative aspect-[2/3] w-full overflow-hidden'>
           <img
             className='h-full w-full object-cover transition duration-500 group-hover:scale-105'
             src={IMG_URL + poster_path}
             alt={original_title}
           />
+          <div className='absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent' />
         </div>
-        <h3 className='mt-3 px-3 truncate text-base font-medium text-gray-200 font-manrope text-wrap'>{original_title}</h3>
+        <div className='px-4 py-4 sm:px-5 sm:py-5'>
+          <h3 className='line-clamp-2 text-sm sm:text-base font-semibold text-white font-manrope'>{original_title}</h3>
+        </div>
       </div>
     </Link>
     )

@@ -19,9 +19,9 @@ const MainContainer = () => {
 
     const {title, overview, id, vote_average} = mainMovie;
     return (
-        <div>
-            <VideoTitle title={title} overview={overview} vote={vote_average} />
+        <div className='relative w-full'>
             <VideoBackground movieId={ id } />
+            <VideoTitle title={title} overview={overview} vote={vote_average} />
         </div>
     )
 }

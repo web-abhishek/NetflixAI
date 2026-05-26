@@ -14,11 +14,14 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoInvertMode } from "react-icons/io5";
 import { LiaSignOutAltSolid } from "react-icons/lia";
+import { FaTimes } from "react-icons/fa";
+import { FaBars } from "react-icons/fa6";
 
 const Header = () => {
 
   const [userProfileOpen, setUserProfileOpen] = useState(false);
   // const [showSuggestions, setShowSuggestions] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const navigate = useNavigate();
   const user = useSelector(store => store.user);
@@ -50,7 +53,6 @@ const Header = () => {
       // An error happened.
       navigate("/error")
     });
-
   }
   const handleGptSearch = () => {
     dispatch(toggleGptSearchView());
@@ -65,18 +67,33 @@ const Header = () => {
     <header className="sticky top-0 z-30 w-full header-glass backdrop-blur-xl px-6 py-2">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4">
         <Link to="/home">
-          <img src={NetflixLogo} alt="NetflixAI" className='w-28 object-contain' />
+          <img src={NetflixLogo} alt="NetflixAI" className='w-15 sm:w-20 md:w-28 object-contain' />
         </Link>
         {user && (
           <div className='flex flex-wrap items-center gap-3'>
-            <ul className='flex items-center'>
-             <Link to="/top-rated"> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Top Rated</li> </Link>
-             <Link to="/trending"> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Trending</li> </Link>
-             <Link to="/popular"> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Popular</li> </Link>
-             <Link to="/upcoming"> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Upcoming</li> </Link>
-            </ul>
+            <div>
+              <ul className='hidden lg:flex items-center'>
+                <Link to="/top-rated"> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Top Rated</li> </Link>
+                <Link to="/trending"> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Trending</li> </Link>
+                <Link to="/popular"> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Popular</li> </Link>
+                <Link to="/upcoming"> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Upcoming</li> </Link>
+              </ul>
+              <button className='lg:hidden rounded-2xl cursor-pointer py-2 text-lg font-semibold'
+                onClick={() => setMenuOpen(!menuOpen)}>
+                {menuOpen ? <FaTimes /> : <FaBars />}
+              </button>
+            </div>
+            {menuOpen && (
+              <ul className='lg:hidden flex items-center flex-col absolute top-16 right-0 w-1/3 h-dvh bg-gray-950/70 backdrop-blur-lg py-4 z-50 transition duration-500 ease-in-out'>
+                <Link to="/top-rated" className='w-full border-b-2 border-red-900 rounded-lg'> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Top Rated</li> </Link>
+                <Link to="/trending" className='w-full border-b-2 border-red-900 rounded-lg'> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Trending</li> </Link>
+                <Link to="/popular" className='w-full border-b-2 border-red-900 rounded-lg'> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Popular</li> </Link>
+                <Link to="/upcoming" className='w-full border-b-2 border-red-900 rounded-lg'> <li className='px-4 py-2 cursor-pointer hover:text-red-500 transition ease-in-out text-gray-300 font-medium text-base'>Upcoming</li> </Link>
+              </ul>
+            )}
+
             {showGptSearch && (
-              <select className='min-w-[150px] rounded-2xl border border-white/10 bg-black/75 px-4 py-2 text-sm text-white outline-none transition hover:border-white/20'
+              <select className='w-20 sm:w-[120px] rounded-2xl border border-white/10 bg-black/75 px-4 py-2 text-sm text-white outline-none transition hover:border-white/20'
                 onChange={handleLangChange}>
                 {
                   SUPPORTED_LANGUAGES.map((lan) => (
@@ -85,41 +102,40 @@ const Header = () => {
                 }
               </select>
             )}
-            
-            <button className='rounded-2xl cursor-pointer border border-transparent bg-gradient-to-r from-red-600 via-red-500 to-pink-600 px-4 py-2 text-sm font-semibold 
+
+            <button className='rounded-2xl cursor-pointer border border-transparent bg-gradient-to-r from-red-600 via-red-500 to-pink-600 px-2 py-1 sm:py-2 sm:px-4 text-sm font-semibold 
             text-white shadow-card transition duration-200 hover:brightness-110'
               onClick={handleGptSearch}>
-              {showGptSearch ? "All Movies" : (
+              {showGptSearch ? "Home" : (
                 <span className='flex items-center gap-2'>
-                  GPT Search <FaSearch />
+                  <FaSearch /> <span className='hidden lg:inline'>GPT Search</span>
                 </span>
               )}
             </button>
             <div>
 
-              <div className='flex cursor-pointer items-center gap-2 px-4 py-2 text-sm font-semibold text-gray-100 transition'
+              <div className='flex cursor-pointer items-center gap-2 py-2 text-sm font-semibold text-gray-100 transition'
                 onClick={() => setUserProfileOpen(!userProfileOpen)}
                 onFocus={(e) => setUserProfileOpen(false)}
                 onBlur={(e) => setUserProfileOpen(false)}
-              > 
+              >
                 <img className='h-10 w-10 rounded-full object-cover'
                   src={user.photoURL} alt={user.displayName || 'User'} />
                 <IoIosArrowDown className={`transition-transform duration-200 
-                ${
-                  userProfileOpen ? 'rotate-180' : ''
-                }`} />
+                ${userProfileOpen ? 'rotate-180' : ''
+                  }`} />
               </div>
               {
-               userProfileOpen && (
+                userProfileOpen && (
                   <div className='absolute right-4 mt-2 w-48 rounded-md bg-black/90 backdrop-blur-lg shadow-lg py-2 z-50'>
-                   <Link to="/favourite">
+                    <Link to="/favourite">
                       <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
                           transition duration-200 hover:brightness-110 cursor-pointer w-full text-left'>
-                         <span className='flex items-center gap-2'>
-                            <FaRegHeart className='text-red-500' /> Favourite
-                         </span>
+                        <span className='flex items-center gap-2'>
+                          <FaRegHeart className='text-red-500' /> Favourite
+                        </span>
                       </button>
-                   </Link>
+                    </Link>
 
                     {/* <button className='border-b-2 border-red-900 px-4 py-2 text-sm font-semibold text-gray-300 shadow-card
                        transition duration-200 hover:brightness-110 cursor-pointer w-full text-left'>
@@ -140,6 +156,7 @@ const Header = () => {
               }
             </div>
           </div>
+
         )}
       </div>
     </header>
